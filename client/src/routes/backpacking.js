@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import SportsLayout from '../components/sportsLayout';
-import { Router, Route, Switch } from "react-router-dom";
-import MeetingMinute from '../components/meetingMinuteLayout';
 
 
 class Backpacking extends Component {

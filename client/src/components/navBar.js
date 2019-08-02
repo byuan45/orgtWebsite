@@ -1,13 +1,22 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { Nav, Navbar, Container, NavDropdown } from "react-bootstrap";
+import { Nav, Navbar, Container, NavDropdown, Button } from "react-bootstrap";
 
 
 
 class NavBar extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            SignIn: true
+        }
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+
+    handleClick() {
+        this.setState(prevState => ({
+            isToggleOn: !prevState.isToggleOn
+        }));
     }
     render() {
         return (
@@ -16,7 +25,7 @@ class NavBar extends Component {
                     <Navbar.Brand href="/">ORGT</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse>
-                        <Nav className="ml-auto">
+                        <Nav >
                             <Nav.Link href="/calendar">Calendar</Nav.Link>
 
                             <NavDropdown title="Sports">
@@ -79,8 +88,10 @@ class NavBar extends Component {
                             </NavDropdown>
 
                         </Nav>
-
                     </Navbar.Collapse>
+                    <Button href="/signIn" variant="outline-success">Sign-In</Button>
+                    <Button href="/register" variant="outline-success">Register</Button>
+
                 </Navbar>
             </Container >
 
