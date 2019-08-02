@@ -4,8 +4,8 @@ import SeaKayaking from "./routes/seaKayaking";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import NavBar from "./components/navBar";
 import MeetingMinute from "./components/meetingMinuteLayout";
-import SignIn from "./routes/signIn";
-import Register from "./routes/register";
+import SignIn from "./auth/signIn";
+import Register from "./auth/register";
 
 class App extends Component {
   render() {
