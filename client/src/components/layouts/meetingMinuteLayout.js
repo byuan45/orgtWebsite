@@ -39,9 +39,6 @@ function MeetingMinute(props) {
         values.splice(i, 1);
         name[1](values);
     }
-
-
-
     return (
         <Container>
             <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">

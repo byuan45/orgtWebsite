@@ -1,23 +1,16 @@
 import React, { Component } from "react";
-import { Nav, Navbar, Container, NavDropdown, Button } from "react-bootstrap";
-
+import { Nav, Navbar, Container, NavDropdown } from "react-bootstrap";
 
 
 class NavBar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            SignIn: true
         }
-        this.handleClick = this.handleClick.bind(this);
     }
 
 
-    handleClick() {
-        this.setState(prevState => ({
-            isToggleOn: !prevState.isToggleOn
-        }));
-    }
+
     render() {
         return (
             <Container>
@@ -27,7 +20,7 @@ class NavBar extends Component {
                     <Navbar.Collapse>
                         <Nav >
                             <Nav.Link href="/calendar">Calendar</Nav.Link>
-
+                            <Nav.Link href="/register">Register</Nav.Link>
                             <NavDropdown title="Sports">
                                 <NavDropdown.Item href="/Backpacking">Backpacking</NavDropdown.Item>
                                 <NavDropdown.Item href="/bikepacking">Bikepacking</NavDropdown.Item>
@@ -69,12 +62,12 @@ class NavBar extends Component {
                             </NavDropdown>
 
                             <NavDropdown title="Admin">
-                                <NavDropdown.Item href="#action/3.1">Morning Trip Reports</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">Returning Trip Reports</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Trip Roster Reports</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Executive Board</NavDropdown.Item>
+                                <NavDropdown.Item href="http://orgt.pbworks.com/w/page/37629590/TRIP%20LEADER%20MORNING%20REPORT">Morning Trip Reports</NavDropdown.Item>
+                                <NavDropdown.Item href="http://orgt.pbworks.com/w/page/37685955/Return%20Trip%20Check%20in%20Report">Returning Trip Reports</NavDropdown.Item>
+                                <NavDropdown.Item href="http://orgt.pbworks.com/Participant%20List%20--%20New%20Fusion%20System">Trip Roster Reports</NavDropdown.Item>
+                                <NavDropdown.Item href="http://orgt.pbworks.com/w/page/23074544/Executive%20Board%C2%A0">Executive Board</NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4">Emergency Contacts</NavDropdown.Item>
+                                <NavDropdown.Item href="/contacts">Emergency Contacts</NavDropdown.Item>
                             </NavDropdown>
 
                             <NavDropdown title="Other">
@@ -89,13 +82,11 @@ class NavBar extends Component {
 
                         </Nav>
                     </Navbar.Collapse>
-                    <Button href="/signIn" variant="outline-success">Sign-In</Button>
-                    <Button href="/register" variant="outline-success">Register</Button>
-
                 </Navbar>
             </Container >
 
         );
+
     }
 }
 

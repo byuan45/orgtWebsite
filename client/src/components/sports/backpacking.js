@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SportsLayout from '../components/sportsLayout';
+import SportsLayout from '../layouts/sportsLayout';
 
 
 class Backpacking extends Component {
@@ -10,6 +10,7 @@ class Backpacking extends Component {
             <React.Fragment>
                 <SportsLayout
                     sportName="Backpacking"
+                    rollSchool=""
                     meetingDay="Thursday"
                     meetingTime="6:30PM"
                     sportVP="Lily Sandler"

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SportsLayout from '../components/sportsLayout';
+import SportsLayout from '../layouts/sportsLayout';
 
 
 class SeaKayaking extends Component {
@@ -8,6 +8,7 @@ class SeaKayaking extends Component {
         return (
             <SportsLayout
                 sportName="Sea Kayaking"
+                rollSchool="Roll School: Mondays from 7:30-10:15PM, meet by the cages"
                 meetingDay="Tuesdays"
                 meetingTime="6:00PM"
                 sportVP="Jenifur Li"

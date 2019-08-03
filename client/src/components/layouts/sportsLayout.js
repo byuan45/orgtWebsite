@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Container, Table, Jumbotron, Accordion, Card, Button, ButtonGroup, DropdownButton, Dropdown, Carousel } from "react-bootstrap";
-import pic1 from '../assets/pic1.jpg';
-import pic2 from '../assets/pic2.jpg';
-import pic3 from '../assets/pic3.jpg';
+import pic1 from '../../assets/pic1.jpg';
+import pic2 from '../../assets/pic2.jpg';
+import pic3 from '../../assets/pic3.jpg';
 
 
 function SportsLayout(props) {
@@ -14,28 +14,32 @@ function SportsLayout(props) {
                     <h1>{props.sportName}</h1>
                     <p>
                         Meeting Time: {props.meetingDay} at {props.meetingTime} in ORGT
-                        </p>
+                    </p>
+                    <p>
+                        {props.rollSchool}
+                    </p>
                 </Jumbotron>
 
                 <div >
                     <ButtonGroup className="mb-4" >
                         <Button href={props.sportName + "/MeetingMinutes"} >Meeting Minutes</Button>
+                        <Button href={props.sportName + "/CheckList"} >Checklist</Button>
                         <DropdownButton as={ButtonGroup} title="Roster/Staffing" id="bg-nested-dropdown">
                             <Dropdown.Item eventKey="1">{props.sportName} Roster</Dropdown.Item>
                             <Dropdown.Item eventKey="2">IP Trip Staffing Spreadsheet</Dropdown.Item>
                         </DropdownButton>
                         <DropdownButton as={ButtonGroup} title="Documents" id="bg-nested-dropdown">
-                            <Dropdown.Item eventKey="1">ORGT {props.sportName} Strategic Plan</Dropdown.Item>
-                            <Dropdown.Item eventKey="2">Policies</Dropdown.Item>
-                            <Dropdown.Item eventKey="2">Curriculum Documents</Dropdown.Item>
-                            <Dropdown.Item eventKey="2">Transition Documents </Dropdown.Item>
-                            <Dropdown.Item eventKey="2">{props.sportName} Seminar Topics </Dropdown.Item>
+                            <Dropdown.Item eventKey="3">Policies</Dropdown.Item>
+                            <Dropdown.Item eventKey="4">Leave No Trace</Dropdown.Item>
+                            <Dropdown.Item eventKey="5">Curriculum Documents</Dropdown.Item>
+                            <Dropdown.Item eventKey="6">Seminar Topics </Dropdown.Item>
+                            <Dropdown.Item eventKey="7">Teaching Materials</Dropdown.Item>
+
 
                         </DropdownButton>
-                        <DropdownButton as={ButtonGroup} title="IP Trip Info" id="bg-nested-dropdown">
-                            <Dropdown.Item eventKey="1">IP Trip Staffing Spreadsheet</Dropdown.Item>
-                            <Dropdown.Item eventKey="2">Trip Planning Resources</Dropdown.Item>
-                            <Dropdown.Item eventKey="2">Teaching Materials</Dropdown.Item>
+                        <DropdownButton as={ButtonGroup} title="Trip Info" id="bg-nested-dropdown">
+                            <Dropdown.Item eventKey="8">Redbooks</Dropdown.Item>
+                            <Dropdown.Item eventKey="9">Trip Planning Resources</Dropdown.Item>
                         </DropdownButton>
                     </ButtonGroup>
                 </div>
