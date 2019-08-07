@@ -1,96 +1,56 @@
 import React, { Component } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
-import { Link, withRouter } from 'react-router-dom';
-import { withFirebase } from '../firebase';
+import fire from '../firebase/firebase';
+import { withRouter } from 'react-router-dom';
 
-const INITIAL_STATE = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    error: null,
-};
-
-const SignUpPage = () => (
-    <div>
-        <h1>SignUp</h1>
-        <SignUpForm />
-    </div>
-);
 
 
 class Register extends Component {
-
-
-
     constructor(props) {
         super(props);
+        this.handleChange = this.handleChange.bind(this);
+        this.signup = this.signup.bind(this);
         this.state = {
-            ...INITIAL_STATE
-        }
+            email: '',
+            password: ''
+        };
     }
 
-    handleChange = (e) => {
-        this.setState({
-            [e.target.id]: e.target.value
-        })
+    handleChange(e) {
+        this.setState({ [e.target.name]: e.target.value });
     }
-    handleSubmit = event => {
-        const { firstName, lastName, email, password } = this.state;
 
-        this.props.firebase
-            .doCreateUserWithEmailAndPassword(email, password)
-            .then(authUser => {
-                this.setState({ ...INITIAL_STATE });
-                this.props.history.push('/');
+
+
+    signup(e) {
+        e.preventDefault();
+        fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u) => {
+        }).then((u) => { console.log(u) })
+            .catch((error) => {
+                console.log(error);
             })
-            .catch(error => {
-                this.setState({ error });
-            });
-
-        event.preventDefault();
-    };
+    }
 
     render() {
-        const {
-            email,
-            password,
-            firstName,
-            lastName,
-            error,
-        } = this.state;
+
         return (
             <Container>
-                <Form onSubmit={this.handleSubmit}>
-                    <Form.Group value={firstName} onChange={this.handleChange} controlId="firstName" >
-                        <Form.Label>First Name</Form.Label>
-                        <Form.Control required />
-                    </Form.Group>
-                    <Form.Group value={lastName} onChange={this.handleChange} controlId="lastName">
-                        <Form.Label>Last Name</Form.Label>
-                        <Form.Control required />
-                    </Form.Group>
-                    <Form.Group value={email} onChange={this.handleChange} controlId="email">
+                <form>
+                    <Form.Group controlId="email">
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control required type="email" placeholder="Enter email" />
+                        <Form.Control value={this.state.email} onChange={this.handleChange} required name="email" type="email" placeholder="Enter email" />
                     </Form.Group>
-
-                    <Form.Group value={password} onChange={this.handleChange} controlId="password">
+                    <Form.Group controlId="password">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control required type="password" placeholder="Password" />
+                        <Form.Control value={this.state.password} onChange={this.handleChange} required type="password" name="password" placeholder="Password" />
                     </Form.Group>
 
-                    <Button variant="primary" type="submit">
-                        Submit
-                    </Button>
-                    {error && <p>{error.message}</p>}
-                </Form>
+                    <Button onClick={this.signup} type="submit" variant="primary">Signup</Button>
+                </form>
             </Container>
         );
     }
 }
 
-const SignUpForm = withRouter(withFirebase(Register));
 
-export default SignUpPage;
-export { SignUpForm };
+export default withRouter(Register);

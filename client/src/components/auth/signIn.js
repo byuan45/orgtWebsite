@@ -1,43 +1,49 @@
 import React, { Component } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
+import fire from '../firebase/firebase';
+
+
 class SignIn extends Component {
     constructor(props) {
         super(props);
+        this.handleChange = this.handleChange.bind(this);
+        this.login = this.login.bind(this);
         this.state = {
             email: '',
             password: ''
-        }
+        };
     }
 
-    handleChange = (e) => {
-        this.setState({
-            [e.target.id]: e.target.value
-        })
+    handleChange(e) {
+        this.setState({ [e.target.name]: e.target.value });
     }
-    handleSubmit = (e) => {
+
+    login(e) {
         e.preventDefault();
-        console.log(this.state)
+        fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((user) => {
+            this.props.history.push('/seaKayaking');
+        })
+            .catch((error) => {
+                this.setState({ error: error });
+            });
     }
 
 
     render() {
         return (
             <Container>
-                <Form onSubmit={this.handleSubmit}>
-                    <Form.Group controlId='email' onChange={this.handleChange}>
+                <form>
+                    <Form.Group controlId="email">
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
+                        <Form.Control value={this.state.email} onChange={this.handleChange} required name="email" type="email" placeholder="Enter email" />
                     </Form.Group>
-
-                    <Form.Group controlId='password' onChange={this.handleChange}>
+                    <Form.Group controlId="password">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
+                        <Form.Control value={this.state.password} onChange={this.handleChange} required type="password" name="password" placeholder="Password" />
                     </Form.Group>
 
-                    <Button  variant="primary" type="submit">
-                        Submit
-                    </Button>
-                </Form>
+                    <Button onClick={this.login} type="submit" variant="primary">Sign In</Button>
+                </form>
             </Container>
         );
     }
