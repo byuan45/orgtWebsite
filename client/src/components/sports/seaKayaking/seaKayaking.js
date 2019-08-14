@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SportsLayout from '../layouts/sportsLayout';
+import SportsLayout from '../../layouts/sportsLayout';
 
 
 class SeaKayaking extends Component {

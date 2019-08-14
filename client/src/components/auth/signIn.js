@@ -21,7 +21,7 @@ class SignIn extends Component {
     login(e) {
         e.preventDefault();
         fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((user) => {
-            this.props.history.push('/seaKayaking');
+            this.props.history.push('/profile');
         })
             .catch((error) => {
                 this.setState({ error: error });

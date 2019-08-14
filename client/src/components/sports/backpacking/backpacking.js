@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import SportsLayout from '../layouts/sportsLayout';
-
+import SportsLayout from '../../layouts/sportsLayout';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 class Backpacking extends Component {
     state = {}
@@ -25,6 +25,8 @@ class Backpacking extends Component {
                     contactSocial="jbers3@gatech.edu"
                     sportNew="Matt Sternberg"
                     contactNew="msterny97@gmail.com"
+                    staffTrip="https://docs.google.com/spreadsheets/d/1U6yPs7Cs-sxWN47gLfQ1m3XphPHbSzW98nD-ngMv_Og/edit#gid=1315682087"
+                    checklist="https://drive.google.com/file/d/1UgtHe2hHCb3fMaNw8xCyLUnBy0z8RbIl/view"
 
                 />
 
